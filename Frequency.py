@@ -48,6 +48,8 @@ class Frequency:
                 freqMap[x]+=1
          for x in t:
              if freqMap.get(x, 0) >= 1: freqMap[x]-=1;
+             else:
+                return False
          return True
      
 
