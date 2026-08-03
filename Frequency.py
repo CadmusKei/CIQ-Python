@@ -19,14 +19,22 @@ class Frequency:
          lo, hi = 0, len(arr) - 1
          while lo < hi:
              mySum = arr[lo] + arr[hi]
-             if mySum > target:
-                 hi-=1
-             elif mySum < target:
-                 lo+=1
-             elif mySum == target:
-                 return [lo, hi]
+             if mySum > target: hi-=1
+             elif mySum < target: lo+=1
+             elif mySum == target: return [lo, hi]
          return []
-                 
+     
+     def firstUniqueCharacter(self, str):
+         if str is None: return -1
+         freqmap = {}
+         for x in str:
+             if x not in freqmap:
+                 freqmap[x] = 1
+             else: freqmap[x] += 1 
+         for i, x in enumerate(str):
+             if freqmap[x] == 1: return i
+         return -1
+                
      # O(n) solution to anagram which doesn't sort
      def anagram(self, s, t):
          if len(s) != len(t):
@@ -41,6 +49,8 @@ class Frequency:
          for x in t:
              if freqMap.get(x, 0) >= 1: freqMap[x]-=1;
          return True
+     
+
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     
     
@@ -50,6 +60,4 @@ solver = Frequency()
 nums = [2, 7, 11, 15]
 target = 9
 
-print(solver.anagram("anagram", "nagaram"))
-
-
+print(solver.firstUniqueCharacter("anagram"))
