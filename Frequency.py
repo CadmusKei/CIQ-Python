@@ -27,11 +27,21 @@ class Frequency:
                  return [lo, hi]
          return []
                  
+     # O(n) solution to anagram which doesn't sort
      def anagram(self, s, t):
-         key = "".join(sorted(s))
-         return ("".join(sorted(t)) == key)  
-    
-    
+         if len(s) != len(t):
+            return False
+            
+         freqMap = {}
+         for x in s:
+             if x not in freqMap:
+                freqMap[x] = 1
+             else: 
+                freqMap[x]+=1
+         for x in t:
+             if freqMap.get(x, 0) >= 1: freqMap[x]-=1;
+         return True
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     
     
 solver = Frequency()
@@ -40,6 +50,6 @@ solver = Frequency()
 nums = [2, 7, 11, 15]
 target = 9
 
-print(solver.sortedTwoSum(nums, target))
+print(solver.anagram("anagram", "nagaram"))
 
 
